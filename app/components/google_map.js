@@ -4,8 +4,8 @@ class GoogleMap extends Component {
     componentDidMount() {
         new google.maps.Map(this.refs.map, {
             center: {
-                lat: 30.307182,
-                lng: -97.755996
+                lat: 30.2672,
+                lng: -97.7431
             },
             zoom: 12
         });
@@ -15,7 +15,9 @@ class GoogleMap extends Component {
         const mapStyle = {
             width: 500,
             height: 500,
-            border: '1px solid black'
+            border: '1px solid black',
+            display: 'block',
+            margin: '0 auto'
         };
         return <div ref="map" style={mapStyle} />;
     }

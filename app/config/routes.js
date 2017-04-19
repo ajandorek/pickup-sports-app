@@ -3,16 +3,16 @@ import React, { Component } from 'react';
 
 import GoogleMap from '../components/google_map';
 import Main from '../components/main';
+import Weather from '../components/weather';
 
-class App extends Component {
-
+export default class App extends Component {
     render() {
         return (
             <div>
                 <Main />
                 <GoogleMap />
+                <Weather />
             </div>
         );
     }
 }
-module.exports = App;
