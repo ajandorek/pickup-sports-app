@@ -1,42 +1,39 @@
-import Helper from './utils/helpers';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
+import { fetchWeather } from '../actions/weatherAction';
+
+@connect((store) => {
+    return {
+        weather: store.weather,
+    }
+})
 
 class Weather extends Component {
+
     constructor(props) {
         super(props);
-
-        this.state = {
-            temp: '',
-            weather: ''
-        };
-    }
-    componentDidMount() {
-        // Helper.getWeather().then((data) => {
-        //     console.log(data);
-        // });
-        // }
-        var apiKey = 'e81dc1712e53391f108b9af5f4ebc3ad';
-        var url = `http://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}&q=$Austin,us`;
-        axios.get(url).then((res) => {
-            const weather = res.data;
-            this.setState({ 
-                temp: (weather.list[0].main.temp * 9/5 - 459.67),
-                weather: weather.list[0].weather[0].description});
-            console.log(weather);
-        }, function (err) {
-            throw err;
-        });
+        this.props.dispatch(fetchWeather());
     }
 
     render() {
+        if (this.props.weather.isFetching) {
+            return (<div>I AM LOADING</div>)
+        }
+        if (!this.props.weather.data) {
+            return (<div>I Have no weather</div>)
+        }
         return (
             <div className="well">
                 <h2>Current Weather for Austin</h2>
-                <p>It is currently {this.state.temp} degrees Farenheit with {this.state.weather}</p>
+                <p>It is currently {Math.floor((this.props.weather.data.list[0].main.temp) * 9/5 - 459.67)} degrees fahrenheit and the current weather is {this.props.weather.data.list[0].weather[0].description}.</p>
             </div>
         );
     }
 }
 
-module.exports = Weather;
+function mapStateToProps({ weather }) {
+    return { weather }
+};
+
+export default connect(mapStateToProps)(Weather);

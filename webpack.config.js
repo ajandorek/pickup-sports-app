@@ -10,7 +10,8 @@ module.exports = {
         include: /app/,
         loader: "babel-loader",
         query: {
-          presets: ["react", "es2015"]
+          plugins: ["transform-decorators-legacy"],
+          presets: ["react", "latest", "es2015", "stage-0"]
         }
       }
     ]

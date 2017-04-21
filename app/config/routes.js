@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import GoogleMap from '../components/google_map';
 import Main from '../components/main';
 import Weather from '../components/weather';
+import NewGame from '../components/new_game_form';
 
 export default class App extends Component {
     render() {
@@ -12,6 +13,7 @@ export default class App extends Component {
                 <Main />
                 <GoogleMap />
                 <Weather />
+                <NewGame />
             </div>
         );
     }

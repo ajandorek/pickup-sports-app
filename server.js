@@ -4,7 +4,7 @@ var methodOverride = require("method-override");
 var express = require("express");
 var logger = require("morgan");
 
-//where to link DB model
+var Sport = require("./models/Sport.js");
 
 mongoose.Promise = Promise;
 
