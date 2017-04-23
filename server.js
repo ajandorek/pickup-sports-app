@@ -21,9 +21,59 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("./public"));
 
+mongoose.connect('mongodb://localhost/pickupapp');
+
+var db = mongoose.connection;
+
+db.on('error', function(err){
+  console.log(`Mongoose Error: ${err}`)
+});
+
+db.once('open', function() {
+  console.log('Mongoose connection successful.');
+})
+
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
+app.get("/api/events", function(req, res) {
+  Sport.find({}).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+
+app.post("/api/events", function(req, res){
+    Sport.create({
+        title: req.body.title,
+        sport:  req.body.sport, 
+        location: req.body.location,
+        time: req.body.time
+    }, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send("Saved Search");
+        }
+    });
+});
+
+//Dev only
+app.delete("/api/events/:id", function(req, res){
+  Sport.deleteOne({ "_id": req.params.id })
+  .exec(function(err){
+    if (err) {
+      console.log(err);
+    } else {
+      res.send("Event successfully removed.");
+    }
+  });
+});
+
 
 app.listen(PORT, function(){
     console.log(`App listening on PORT: ${PORT}`);

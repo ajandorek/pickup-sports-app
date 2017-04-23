@@ -20,7 +20,7 @@ function receiveWeather(data) {
 export const FAILURE_WEATHER = 'FAILURE_WEATHER';
 function failureWeather(message) {
     return {
-        type: FAILURE,
+        type: FAILURE_WEATHER,
         payload: {
             message
         }

@@ -13,7 +13,7 @@ module.exports = {
           plugins: ["transform-decorators-legacy"],
           presets: ["react", "latest", "es2015", "stage-0"]
         }
-      }
+      },
     ]
   },
   devtool: "eval-source-map"

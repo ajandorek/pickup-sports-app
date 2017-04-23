@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchEvents } from '../actions/formAction';
+import Helpers from './utils/helpers';
+
+@connect((store) => {
+    return {
+        events: store.events,
+    }
+})
 
 class GoogleMap extends Component {
+    constructor(props) {
+        super(props);
+        this.props.dispatch(fetchEvents());
+    }
     componentDidMount() {
-        var map = new google.maps.Map(this.refs.map, {
+        setTimeout(function(){console.log(this.props.events)}, 1000);
+        var map = this.refs.map
+        var gmap = new google.maps.Map(map, {
             center: {
                 lat: 30.2672,
                 lng: -97.7431
             },
             zoom: 13
         });
-        var marker = new google.maps.Marker({
-            position: {
-                lat: 30.2669624,
-                lng: -97.77285930000001
-            },
-            map: map,
-            title: 'Hello World!'
-        });
-        var infowindow = new google.maps.InfoWindow({
-            content: `Sport: Basketball Title: 5v5 Pickup Time: 7:30`
-        });
-        marker.addListener('click', function () {
-            infowindow.open(map, marker);
-        });
+        Helpers.initMap(gmap);
     }
 
     render() {
@@ -37,4 +39,8 @@ class GoogleMap extends Component {
     }
 }
 
-export default GoogleMap;
+function mapStateToProps({ events }) {
+    return { events }
+};
+
+export default connect(mapStateToProps)(GoogleMap);

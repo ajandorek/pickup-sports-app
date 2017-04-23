@@ -11,13 +11,16 @@ const now = moment().hour(0).minute(0);
 
 class NewGame extends Component {
     render() {
-        const { fields: { name, location, sport, time }, handleSubmit } = this.props;
+        const { fields: { title, location, sport, time }, handleSubmit } = this.props;
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(this.props.newEvent)}>
                 <h3>Add a new pickup game!</h3>
-                <div className="form-group">
+                <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
                     <label>Event Name</label>
-                    <input type="text" className="form-control" {...name} />
+                    <input type="text" className="form-control" {...title} />
+                    <div className="text-help">
+                        {title.touched ? title.error : ''}
+                    </div>
                 </div>
                 <div className="form-group">
                     <label>Sport</label>
@@ -30,13 +33,19 @@ class NewGame extends Component {
                         <option value="Other">Other</option>
                     </select>
                 </div>
-                <div className="form-group">
+                <div className={`form-group ${location.touched && location.invalid ? 'has-danger' : ''}`}>
                     <label>Location</label>
                     <input type="text" className="form-control" {...location} />
+                    <div className="text-help">
+                        {location.touched ? location.error : ''}
+                    </div>
                 </div>
-                <div className="form-group">
+                <div className={`form-group ${time.touched && time.invalid ? 'has-danger' : ''}`}>
                     <label>Time</label>
                     <input type="text" className="form-control" {...time} />
+                    <div className="text-help">
+                        {time.touched ? time.error : ''}
+                    </div>
                     {/*<TimePicker
                         showSecond={false}
                         defaultValue={now}
@@ -50,7 +59,23 @@ class NewGame extends Component {
         )
     }
 }
+function validate(values) {
+    const errors = {};
+
+    if (!values.title) {
+        errors.title = 'Please enter a title';
+    }
+    if (!values.location) {
+        errors.location = 'Please enter a location';
+    }
+    if (!values.time) {
+        errors.time = 'Please enter an event time';
+    }
+
+    return errors;
+}
 export default reduxForm({
     form: 'NewSportForm',
-    fields: ['name', 'location', 'sport', 'time']
-})(NewGame);
+    fields: ['title', 'location', 'sport', 'time'],
+    validate
+}, null, { newEvent })(NewGame);
