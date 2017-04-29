@@ -94,7 +94,7 @@ export default class GMap extends Component {
 
 
     render() {
-        if (!this.props.events || !this.props.events.data) return <div style={style}><Halogen.RingLoader color={blue}/></div>
+        if (!this.props.events || !this.props.events.data) return <div><Halogen.RingLoader color='#4DAF7C'/></div>
         return (
             <div>
                 <RenderMap
