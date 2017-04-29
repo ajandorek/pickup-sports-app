@@ -22,7 +22,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("./public"));
 
-mongoose.connect('mongodb://localhost/pickupapp');
+mongoose.connect('mongodb://heroku_x9znsrps:7i3id4b3stul3ngb000h4s658u@ds029107.mlab.com:29107/heroku_x9znsrps');
 
 var db = mongoose.connection;
 
