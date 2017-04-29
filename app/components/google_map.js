@@ -18,10 +18,10 @@ const RenderMap = withGoogleMap(props => (
             >
                 {marker.showInfo && <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
                     <div>
-                        <div>{`Event: ${marker.title}`}</div>
-                        <div>{`Sport: ${marker.sport}`}</div>
-                        <div>{`Location: ${marker.location}`}</div>
-                        <div>{`Time: ${marker.time}`}</div>
+                        <div><strong>Event: </strong>{marker.title}</div>
+                        <div><strong>Sport: </strong>{marker.sport}</div>
+                        <div><strong>Location: </strong>{marker.location}</div>
+                        <div><strong>Time: </strong>{marker.time}</div>
                     </div>
                 </InfoWindow>}
             </Marker>
@@ -42,6 +42,7 @@ export default class GMap extends Component {
         this.props.dispatch(fetchEvents());
 
     }
+    
 
     componentWillReceiveProps(nextProps) {
         this.setState({ events: nextProps.events });

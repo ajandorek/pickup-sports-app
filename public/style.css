@@ -1,3 +1,7 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
 .map {
     margin: 0 auto;
     display: block;
@@ -30,7 +34,7 @@ form {
 .btn-group {
     margin: 0 auto;
     display: block;
-    width: 500px;
+    width: 494px;
     
 }
 
@@ -41,4 +45,8 @@ form {
 
 .submit{
     width: 261px;
+}
+
+h3 {
+    font-size: 21px;
 }
