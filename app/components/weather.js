@@ -18,7 +18,7 @@ class Weather extends Component {
 
     render() {
         if (this.props.weather.isFetching) {
-            return (<div>I AM LOADING</div>)
+            return (<div style={style}><Halogen.PacmanLoader color={color}/></div>)
         }
         if (!this.props.weather.data) {
             return (<div>I Have no weather</div>)

@@ -4,6 +4,7 @@ import { fetchEvents } from '../actions/formAction';
 import Helpers from './utils/helpers';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import _ from "lodash";
+import Halogen from 'halogen';
 
 const RenderMap = withGoogleMap(props => (
     <GoogleMap
@@ -93,7 +94,7 @@ export default class GMap extends Component {
 
 
     render() {
-        if (!this.props.events || !this.props.events.data) return <div ref="map">loading</div>
+        if (!this.props.events || !this.props.events.data) return <div style={style}><Halogen.RingLoader color={blue}/></div>
         return (
             <div>
                 <RenderMap
