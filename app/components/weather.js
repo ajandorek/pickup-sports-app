@@ -21,7 +21,7 @@ class Weather extends Component {
             return (<div style={style}><Halogen.PacmanLoader color='#4DAF7C'/></div>)
         }
         if (!this.props.weather.data) {
-            return (<div>I Have no weather</div>)
+            return (<div style={style}><Halogen.PacmanLoader color='#4DAF7C'/></div>)
         }
         return (
             <div className="well">
