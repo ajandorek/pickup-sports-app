@@ -24,7 +24,7 @@ class NewGame extends Component {
                 <h3>Add a New Pickup Game!</h3>
                 <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
                     <label>Event Name</label>
-                    <input type="text" className="form-control" {...title} />
+                    <input placeholder="Event Title" type="text" className="form-control" {...title} />
                     <div className="text-help">
                         {title.touched ? title.error : ''}
                     </div>
@@ -46,14 +46,14 @@ class NewGame extends Component {
                 </div>
                 <div className={`form-group ${location.touched && location.invalid ? 'has-danger' : ''}`}>
                     <label>Location</label>
-                    <input type="text" className="form-control" {...location} />
+                    <input placeholder="Event Location" type="text" className="form-control" {...location} />
                     <div className="text-help">
                         {location.touched ? location.error : ''}
                     </div>
                 </div>
                 <div className={`form-group ${time.touched && time.invalid ? 'has-danger' : ''}`}>
                     <label>Time</label>
-                    <input type="text" className="form-control" {...time} />
+                    <input placeholder="Time of Event" type="text" className="form-control" {...time} />
                     <div className="text-help">
                         {time.touched ? time.error : ''}
                     </div>

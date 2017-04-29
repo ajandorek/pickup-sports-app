@@ -50,3 +50,30 @@ form {
 h3 {
     font-size: 21px;
 }
+
+@media (max-width: 1000px) {
+    .btn-group{
+        display: none
+    }
+    .well {
+        display: block;
+        margin: 0 auto;
+        float: none;
+        margin-bottom: 10px;
+    }
+    .map {
+        display: block;
+        margin: 0 auto;
+        float: none;
+    }
+    form{
+        display: block;
+        margin: 0 auto;
+        float: none;
+        margin-top: 10px;
+    }
+    
+    .btn-info{
+        margin-top: 0px;
+    }
+}

@@ -19,10 +19,10 @@ const RenderMap = withGoogleMap(props => (
             >
                 {marker.showInfo && <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
                     <div>
-                        <div><strong>Event: </strong>{marker.title}</div>
-                        <div><strong>Sport: </strong>{marker.sport}</div>
-                        <div><strong>Location: </strong>{marker.location}</div>
-                        <div><strong>Time: </strong>{marker.time}</div>
+                        <div><strong style={{ color:'dodgerblue' }}>Event: </strong>{marker.title}</div>
+                        <div><strong style={{ color: 'dodgerblue' }}>Sport: </strong>{marker.sport}</div>
+                        <div><strong style={{ color: 'dodgerblue' }}>Location: </strong>{marker.location}</div>
+                        <div><strong style={{ color: 'dodgerblue' }}>Time: </strong>{marker.time}</div>
                     </div>
                 </InfoWindow>}
             </Marker>
