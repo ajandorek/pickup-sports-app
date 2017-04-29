@@ -13,6 +13,12 @@ var SportSchema = new Schema({
     },
     time: {
         type: String
+    },
+    lat: {
+        type: Number
+    },
+    lng: {
+        type: Number
     }
 });
 

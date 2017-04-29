@@ -1,0 +1,44 @@
+.map {
+    margin: 0 auto;
+    display: block;
+    float: left;
+    padding-left: 10px;
+}
+
+.well {
+    width: 300px;
+    float: left;
+}
+
+form {
+    width: 300px;
+    float: right;
+    background-color: #083E4B;
+    padding: 20px;
+    border-radius: 1%;
+}
+
+.content {
+    flex: 1;
+    align-items: center;
+}
+
+.btn-info {
+    margin-top: 10px;
+}
+
+.btn-group {
+    margin: 0 auto;
+    display: block;
+    width: 500px;
+    
+}
+
+.btn-primary {
+    width: 80px;
+    font-size: 12px;
+}
+
+.submit{
+    width: 261px;
+}

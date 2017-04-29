@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 var express = require("express");
 var logger = require("morgan");
+var Helpers = require("./app/components/utils/helpers");
 
 var Sport = require("./models/Sport.js");
 
@@ -25,19 +26,19 @@ mongoose.connect('mongodb://localhost/pickupapp');
 
 var db = mongoose.connection;
 
-db.on('error', function(err){
+db.on('error', function (err) {
   console.log(`Mongoose Error: ${err}`)
 });
 
-db.once('open', function() {
+db.once('open', function () {
   console.log('Mongoose connection successful.');
 })
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
-app.get("/api/events", function(req, res) {
-  Sport.find({}).exec(function(err, doc) {
+app.get("/api/events", function (req, res) {
+  Sport.find({}).exec(function (err, doc) {
     if (err) {
       console.log(err);
     }
@@ -47,34 +48,33 @@ app.get("/api/events", function(req, res) {
   });
 });
 
-app.post("/api/events", function(req, res){
-    Sport.create({
+app.post("/api/events", function (req, res) {
+  Helpers.geoLocate(req.body.location)
+    .then(function (results) {
+      Sport.create({
         title: req.body.title,
-        sport:  req.body.sport, 
+        sport: req.body.sport,
         location: req.body.location,
-        time: req.body.time
-    }, function(err) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send("Saved Search");
-        }
+        time: req.body.time,
+        lat: results.lat,
+        lng: results.lng
+      }).then(obj=>res.json(obj));
     });
 });
 
 //Dev only
-app.delete("/api/events/:id", function(req, res){
+app.delete("/api/events/:id", function (req, res) {
   Sport.deleteOne({ "_id": req.params.id })
-  .exec(function(err){
-    if (err) {
-      console.log(err);
-    } else {
-      res.send("Event successfully removed.");
-    }
-  });
+    .exec(function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Event successfully removed.");
+      }
+    });
 });
 
 
-app.listen(PORT, function(){
-    console.log(`App listening on PORT: ${PORT}`);
+app.listen(PORT, function () {
+  console.log(`App listening on PORT: ${PORT}`);
 })

@@ -7,13 +7,17 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: /app/,
+        exclude: /node_modules/,
         loader: "babel-loader",
         query: {
           plugins: ["transform-decorators-legacy"],
-          presets: ["react", "latest", "es2015", "stage-0"]
-        }
+          presets: ["latest", "react", "stage-0"]
+        },
+      }, {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
+      { test: /\.css$/, loader: 'style-loader!css-loader' }
     ]
   },
   devtool: "eval-source-map"
