@@ -18,10 +18,10 @@ class Weather extends Component {
 
     render() {
         if (this.props.weather.isFetching) {
-            return (<div style={style}><Halogen.PacmanLoader color='#4DAF7C'/></div>)
+            return (<div><Halogen.PacmanLoader color='#4DAF7C'/></div>)
         }
         if (!this.props.weather.data) {
-            return (<div style={style}><Halogen.PacmanLoader color='#4DAF7C'/></div>)
+            return (<div><Halogen.PacmanLoader color='#4DAF7C'/></div>)
         }
         return (
             <div className="well">
