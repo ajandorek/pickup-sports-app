@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchWeather } from '../actions/weatherAction';
 import _ from 'lodash';
+import Halogen from 'halogen';
 
 @connect((store) => {
     return {
