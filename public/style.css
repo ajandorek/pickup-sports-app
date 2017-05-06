@@ -6,7 +6,7 @@
     margin: 0 auto;
     display: block;
     float: left;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 .well {
@@ -35,6 +35,7 @@ form {
     margin: 0 auto;
     display: block;
     width: 494px;
+    padding-left: 10px
     
 }
 
