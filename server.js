@@ -37,6 +37,7 @@ db.once('open', function () {
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
+
 app.get("/api/events", function (req, res) {
   Sport.find({}).exec(function (err, doc) {
     if (err) {

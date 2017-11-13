@@ -52,6 +52,10 @@ h3 {
     font-size: 21px;
 }
 
+.eventInfo{
+    color: darkslategrey;
+}
+
 @media (max-width: 1000px) {
     .btn-group{
         display: none
