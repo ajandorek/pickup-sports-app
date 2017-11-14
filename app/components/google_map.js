@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchEvents } from '../actions/formAction';
+import { fetchEvents } from '../actions/eventAction';
 import Helpers from './utils/helpers';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import _ from "lodash";
@@ -40,8 +40,7 @@ export default class GMap extends Component {
 
     constructor(props) {
         super(props);
-        this.props.dispatch(fetchEvents());
-
+        this.props.dispatch(fetchEvents('#'));
     }
     
 
@@ -96,15 +95,13 @@ export default class GMap extends Component {
     render() {
         if (!this.props.events || !this.props.events.data) return <div><Halogen.RingLoader color='#4DAF7C'/></div>
         return (
-            <div>
                 <RenderMap
-                    containerElement={<div className="map" style={{ height: 450, width: 500 }} />}
-                    mapElement={<div className="map" style={{ height: 450, width: 500 }} />}
+                    containerElement={<div className="map" style={{ height: 500, width: 555 }} />}
+                    mapElement={<div style={{ height: 500, width: 555 }} />}
                     events={this.state.events}
                     onMarkerClick={this.handleMarkerClick}
                     onMarkerClose={this.handleMarkerClose}
                 />
-            </div>
         );
     }
 }

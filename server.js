@@ -49,6 +49,18 @@ app.get("/api/events", function (req, res) {
   });
 });
 
+app.get("/api/events/:sport", function (req, res) {
+  Sport.find({"sport": req.params.sport}).exec(function (err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+});
+
+
 app.post("/api/events", function (req, res) {
   console.log(req.body.title);
   Helpers.geoLocate(req.body.location)

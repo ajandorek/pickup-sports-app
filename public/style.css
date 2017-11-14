@@ -4,27 +4,22 @@
 
 .map {
     margin: 0 auto;
-    display: block;
-    float: left;
-    padding-left: 20px;
+    display: inline-block;
+    vertical-align:top;
 }
 
 .well {
     width: 300px;
-    float: left;
+    display: inline-block;
+    vertical-align:top;
 }
 
 form {
     width: 300px;
-    float: right;
-    background-color: #083E4B;
+    background-color: #4e5d6c;
     padding: 20px;
-    border-radius: 1%;
-}
-
-.content {
-    flex: 1;
-    align-items: center;
+    display: inline-block;
+    vertical-align:top;
 }
 
 .btn-info {
@@ -34,9 +29,7 @@ form {
 .btn-group {
     margin: 0 auto;
     display: block;
-    width: 494px;
-    padding-left: 10px
-    
+    width: 555px;
 }
 
 .btn-primary {
@@ -52,11 +45,27 @@ h3 {
     font-size: 21px;
 }
 
+.container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.parent {
+    width: 100%;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  .parent .content {
+    white-space:nowrap;
+  }
+
 .eventInfo{
     color: darkslategrey;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1245px) {
     .btn-group{
         display: none
     }

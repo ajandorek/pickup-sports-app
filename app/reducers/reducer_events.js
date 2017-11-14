@@ -1,4 +1,4 @@
-import { RECEIVE_EVENTS, FAILURE_EVENTS } from '../actions/formAction';
+import { RECEIVE_EVENTS, FAILURE_EVENTS, FETCH_FILTERED_EVENTS } from '../actions/formAction';
 export default function (state = {
     data: null
 }, action) {
@@ -10,15 +10,18 @@ export default function (state = {
             })
             break;
         case 'CREATE_EVENT_FULFILLED':
-            console.log('here');
-            console.log(state);
             return Object.assign({}, state, {
                 data: {
                     data: state.data.data.concat(action.payload.data)
                 }
             })
             break;
-        // case FAILURE_EVENTS:
+        case 'FETCH_FILTERED_EVENTS_FULFILLED':
+            console.log(action.payload);
+            return Object.assign({}, state, {
+                data: action.payload
+            })
+        case FAILURE_EVENTS:
     }
     return state
 };

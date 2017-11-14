@@ -26,7 +26,7 @@ class Weather extends Component {
         }
         return (
             <div className="well">
-                <h3>Current Weather for Austin</h3>
+                <h3>Austin Weather</h3>
                 <p><strong>High Temp: </strong>{Math.floor((this.props.weather.data.list[0].main.temp_max) * 9/5 - 459.67)} Degrees Fahrenheit</p>
                 <p><strong>Low Temp: </strong>{Math.floor((this.props.weather.data.list[0].main.temp_min) * 9/5 - 459.67)} Degrees Fahrenheit</p>
                 <p><strong>Weather: </strong>{_.startCase(this.props.weather.data.list[0].weather[0].description)}</p>

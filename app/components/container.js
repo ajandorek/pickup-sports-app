@@ -14,7 +14,7 @@ export default class Container extends Component {
     }
 
     return (
-        <div>
+        <div className='container-fluid'>
         <Main auth={auth}/>
         </div>
     )
