@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { newEvent } from '../actions/formAction';
 import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
@@ -12,55 +12,106 @@ const now = moment().hour(0).minute(0);
 
 class NewGame extends Component {
     submitMyForm(event) {
-        const { newEvent, resetForm } = this.props;
-        return newEvent(event).then(() => {
-            resetForm();
-        });
+        const { reset } = this.props
+        this.props.dispatch(newEvent(event))
+            .then(() => {
+                reset();
+            })
     }
+
+    renderSelector(field) {
+        const { meta: { touched, error } } = field;
+        const className = `form-group ${touched && error ? 'has-danger' : ''}`
+
+        return (
+            <div className={className}>
+                <select
+                    className="form-control"
+                    type="select"
+                    {...field.input}
+                >
+                    <option value="">Please Select a Sport...</option>
+                    <option value="Baseball">Baseball</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Football">Football</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Volleyball">Volleyball</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div className="text-help">
+                    {touched ? error : ''}
+                </div>
+            </div>
+        )
+    }
+
+    renderField(field) {
+        const { meta: { touched, error } } = field;
+        const className = `form-group ${touched && error ? 'has-danger' : ''}`
+
+        return (
+            <div className={className}>
+                <input
+                    className="form-control"
+                    type="text"
+                    {...field.input}
+                />
+                <div className="text-help">
+                    {touched ? error : ''}
+                </div>
+            </div>
+        )
+    }
+
     render() {
         const { fields: { title, location, sport, time }, handleSubmit, resetForm, submitting } = this.props;
         return (
             <form onSubmit={handleSubmit(this.submitMyForm.bind(this))}>
                 <h3>Add a New Pickup Game!</h3>
-                <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
+                <div>
                     <label>Event Name</label>
-                    <input placeholder="Event Title" type="text" className="form-control" {...title} />
-                    <div className="text-help">
-                        {title.touched ? title.error : ''}
-                    </div>
+                    <Field
+                        placeholder="Event Title"
+                        type="text"
+                        component={this.renderField}
+                        name='title'
+                        className="form-control"
+                    />
                 </div>
-                <div className={`form-group ${sport.touched && sport.invalid ? 'has-danger' : ''}`}>
+                <div>
                     <label>Sport</label>
-                    <select name="cars" className="form-control" {...sport}>
-                        <option value="">Please Select a Sport...</option>
-                        <option value="Baseball">Baseball</option>
-                        <option value="Basketball">Basketball</option>
-                        <option value="Football">Football</option>
-                        <option value="Soccer">Soccer</option>
-                        <option value="Volleyball">Volleyball</option>
-                        <option value="Other">Other</option>
-                    </select>
+                    <Field 
+                        name="sport" 
+                        component={this.renderSelector} 
+                        className="form-control" />
                 </div>
                 <div className="text-help">
-                    {sport.touched ? sport.error : ''}
                 </div>
-                <div className={`form-group ${location.touched && location.invalid ? 'has-danger' : ''}`}>
+                <div>
                     <label>Location</label>
-                    <input placeholder="Event Location" type="text" className="form-control" {...location} />
+                    <Field
+                        placeholder="Event Location"
+                        component={this.renderField}
+                        name='location'
+                        type="text"
+                        className="form-control"
+                    />
                     <div className="text-help">
-                        {location.touched ? location.error : ''}
                     </div>
                 </div>
-                <div className={`form-group ${time.touched && time.invalid ? 'has-danger' : ''}`}>
+                <div>
                     <label>Time</label>
-                    <input placeholder="Time of Event" type="text" className="form-control" {...time} />
+                    <Field
+                        placeholder="Time of Event"
+                        name='time'
+                        component={this.renderField}
+                        type="text"
+                        className="form-control"
+                    />
                     <div className="text-help">
-                        {time.touched ? time.error : ''}
                     </div>
                 </div>
-                {localStorage.getItem("id_token") ?
                 <button className='btn btn-primary submit'>Submit</button>
-                : <div>Please log in to post an event</div>}
             </form>
         )
     }
@@ -84,9 +135,6 @@ function validate(values) {
     return errors;
 }
 
-NewGame.propTypes = {
-    resetForm: PropTypes.func.isRequired
-}
 export default reduxForm({
     form: 'NewSportForm',
     fields: ['title', 'location', 'sport', 'time'],

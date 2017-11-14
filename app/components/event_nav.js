@@ -7,8 +7,6 @@ class EventNav extends Component {
         super(props);
     }
 
-
-
     render() {
         return (
             <div className="btn-group">

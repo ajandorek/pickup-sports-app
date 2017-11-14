@@ -96,8 +96,8 @@ export default class GMap extends Component {
         if (!this.props.events || !this.props.events.data) return <div><Halogen.RingLoader color='#4DAF7C'/></div>
         return (
                 <RenderMap
-                    containerElement={<div className="map" style={{ height: 500, width: 555 }} />}
-                    mapElement={<div style={{ height: 500, width: 555 }} />}
+                    containerElement={<div className="map" style={{ height: 500, width: 554 }} />}
+                    mapElement={<div style={{ height: 500, width: 554 }} />}
                     events={this.state.events}
                     onMarkerClick={this.handleMarkerClick}
                     onMarkerClose={this.handleMarkerClose}
