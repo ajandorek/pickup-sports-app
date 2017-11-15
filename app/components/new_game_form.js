@@ -9,6 +9,9 @@ const format = 'h:mm a';
 
 const now = moment().hour(0).minute(0);
 
+function onChange(value) {
+    console.log(value && value.format(format));
+}
 
 class NewGame extends Component {
     submitMyForm(event) {
@@ -17,6 +20,27 @@ class NewGame extends Component {
             .then(() => {
                 reset();
             })
+    }
+
+    renderTime(field) {
+        const { meta: { touched, error } } = field;
+        const className = `form-group ${touched && error ? 'has-danger' : ''}`
+        return (
+            <div className={className}>
+                <TimePicker
+                    showSecond={false}
+                    defaultValue={now}
+                    className="xxx"
+                    onChange={onChange}
+                    format={format}
+                    use12Hours
+                    {...field.input}
+                />
+                <div className="text-help">
+                    {touched ? error : ''}
+                </div>
+            </div>
+        )
     }
 
     renderSelector(field) {
@@ -80,9 +104,9 @@ class NewGame extends Component {
                 </div>
                 <div>
                     <label>Sport</label>
-                    <Field 
-                        name="sport" 
-                        component={this.renderSelector} 
+                    <Field
+                        name="sport"
+                        component={this.renderSelector}
                         className="form-control" />
                 </div>
                 <div className="text-help">
@@ -102,9 +126,8 @@ class NewGame extends Component {
                 <div>
                     <label>Time</label>
                     <Field
-                        placeholder="Time of Event"
                         name='time'
-                        component={this.renderField}
+                        component={this.renderTime}
                         type="text"
                         className="form-control"
                     />

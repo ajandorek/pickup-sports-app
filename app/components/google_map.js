@@ -5,6 +5,7 @@ import Helpers from './utils/helpers';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import _ from "lodash";
 import Halogen from 'halogen';
+import moment from 'moment';
 
 const RenderMap = withGoogleMap(props => (
     <GoogleMap
@@ -22,7 +23,7 @@ const RenderMap = withGoogleMap(props => (
                         <div><strong style={{ color:'dodgerblue' }}>Event: </strong><span className='eventInfo'>{marker.title}</span></div>
                         <div><strong style={{ color: 'dodgerblue' }}>Sport: </strong><span className='eventInfo'>{marker.sport}</span></div>
                         <div><strong style={{ color: 'dodgerblue' }}>Location: </strong><span className='eventInfo'>{marker.location}</span></div>
-                        <div><strong style={{ color: 'dodgerblue' }}>Time: </strong><span className='eventInfo'>{marker.time}</span></div>
+                        <div><strong style={{ color: 'dodgerblue' }}>Time: </strong><span className='eventInfo'>{moment(marker.time).format("hh:mm A") }</span></div>
                     </div>
                 </InfoWindow>}
             </Marker>
