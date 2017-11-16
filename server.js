@@ -63,7 +63,6 @@ app.get("/api/events/:sport", function (req, res) {
 
 
 app.post("/api/events", function (req, res) {
-  console.log(req.body.title);
   Helpers.geoLocate(req.body.location)
     .then(function (results) {
       Sport.create({
@@ -72,7 +71,8 @@ app.post("/api/events", function (req, res) {
         location: req.body.location,
         time: req.body.time,
         lat: results.lat,
-        lng: results.lng
+        lng: results.lng,
+        expireAt: req.body.time
       }).then(obj=>res.json(obj));
     });
 });

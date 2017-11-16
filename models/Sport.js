@@ -12,13 +12,16 @@ var SportSchema = new Schema({
         type: String
     },
     time: {
-        type: String
+        type: Date
     },
     lat: {
         type: Number
     },
     lng: {
         type: Number
+    },
+    expireAt: {
+        type: Date
     }
 });
 
