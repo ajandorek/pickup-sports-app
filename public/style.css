@@ -77,6 +77,14 @@ h3 {
     height: 100% !important;
 }
 
+.rdtDay, thead, tfoot, .rdtCount, .rdtBtn {
+    color: #999;
+}
+
+.rdtOld, .rdtNew{
+    color: #ebebeb !important;
+}
+
 @media (max-width: 1245px) {
     .btn-group{
         display: none

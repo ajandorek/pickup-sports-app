@@ -21,9 +21,9 @@ const RenderMap = withGoogleMap(props => (
                 {marker.showInfo && <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
                     <div>
                         <div><strong style={{ color:'dodgerblue' }}>Event: </strong><span className='eventInfo'>{marker.title}</span></div>
+                        <div><strong style={{ color: 'dodgerblue' }}>Date/Time: </strong><span className='eventInfo'>{moment(marker.time).format("MM/DD/YYYY hh:mm A") }</span></div>
                         <div><strong style={{ color: 'dodgerblue' }}>Sport: </strong><span className='eventInfo'>{marker.sport}</span></div>
                         <div><strong style={{ color: 'dodgerblue' }}>Location: </strong><span className='eventInfo'>{marker.location}</span></div>
-                        <div><strong style={{ color: 'dodgerblue' }}>Time: </strong><span className='eventInfo'>{moment(marker.time).format("hh:mm A") }</span></div>
                     </div>
                 </InfoWindow>}
             </Marker>

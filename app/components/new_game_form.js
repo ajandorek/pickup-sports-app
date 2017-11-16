@@ -3,7 +3,8 @@ import { reduxForm, Field } from 'redux-form';
 import { newEvent } from '../actions/formAction';
 import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
-import TimePicker from 'rc-time-picker';
+// import TimePicker from 'rc-time-picker';
+import Datetime from 'react-datetime';
 
 const format = 'h:mm a';
 
@@ -27,7 +28,7 @@ class NewGame extends Component {
         const className = `form-group ${touched && error ? 'has-danger' : ''}`
         return (
             <div className={className}>
-                <TimePicker
+                {/* <TimePicker
                     showSecond={false}
                     defaultValue={now}
                     className="xxx"
@@ -35,6 +36,9 @@ class NewGame extends Component {
                     format={format}
                     use12Hours
                     {...field.input}
+                /> */}
+                <Datetime 
+                {...field.input}
                 />
                 <div className="text-help">
                     {touched ? error : ''}
@@ -103,6 +107,17 @@ class NewGame extends Component {
                     />
                 </div>
                 <div>
+                    <label>Date/Time</label>
+                    <Field
+                        name='time'
+                        component={this.renderTime}
+                        type="text"
+                        className="form-control"
+                    />
+                    <div className="text-help">
+                    </div>
+                </div>
+                <div>
                     <label>Sport</label>
                     <Field
                         name="sport"
@@ -117,17 +132,6 @@ class NewGame extends Component {
                         placeholder="Event Location"
                         component={this.renderField}
                         name='location'
-                        type="text"
-                        className="form-control"
-                    />
-                    <div className="text-help">
-                    </div>
-                </div>
-                <div>
-                    <label>Time</label>
-                    <Field
-                        name='time'
-                        component={this.renderTime}
                         type="text"
                         className="form-control"
                     />
