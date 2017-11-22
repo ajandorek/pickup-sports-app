@@ -4,11 +4,11 @@ import { fetchWeather } from '../actions/weatherAction';
 import _ from 'lodash';
 import Halogen from 'halogen';
 
-@connect((store) => {
-    return {
-        weather: store.weather,
-    }
-})
+// @connect((store) => {
+//     return {
+//         weather: store.weather,
+//     }
+// })
 
 class Weather extends Component {
 
@@ -27,11 +27,10 @@ class Weather extends Component {
         return (
             <div className="well">
                 <h3>Austin Weather</h3>
-                <p><strong>High Temp: </strong>{Math.floor((this.props.weather.data.list[0].main.temp_max) * 9/5 - 459.67)} Degrees Fahrenheit</p>
-                <p><strong>Low Temp: </strong>{Math.floor((this.props.weather.data.list[0].main.temp_min) * 9/5 - 459.67)} Degrees Fahrenheit</p>
-                <p><strong>Weather: </strong>{_.startCase(this.props.weather.data.list[0].weather[0].description)}</p>
-                <p><strong>Humidity: </strong>{_.startCase(this.props.weather.data.list[0].main.humidity)}</p>
-                <p><strong>Wind Speed: </strong>{_.startCase(this.props.weather.data.list[0].wind.speed)}</p>
+                <p><strong>Current Temp: </strong>{Math.floor((this.props.weather.data.main.temp) * 9/5 - 459.67)} Degrees Fahrenheit</p>
+                <p><strong>Weather: </strong>{_.startCase(this.props.weather.data.weather[0].description)}</p>
+                <p><strong>Humidity: </strong>{_.startCase(this.props.weather.data.main.humidity)}</p>
+                <p><strong>Wind Speed: </strong>{(this.props.weather.data.wind.speed)} MPH</p>
             </div>
         );
     }

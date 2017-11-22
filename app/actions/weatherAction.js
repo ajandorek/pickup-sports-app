@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 var API_KEY = 'e81dc1712e53391f108b9af5f4ebc3ad';
-const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}&q=$Austin,us`
+const ROOT_URL = `http://api.openweathermap.org/data/2.5/weather?q=Austin,us&appid=${API_KEY}`
 
 export const REQUEST_WEATHER = 'REQUEST_WEATHER';
 function requestWeather() {
