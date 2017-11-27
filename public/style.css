@@ -85,6 +85,11 @@ h3 {
     color: #ebebeb !important;
 }
 
+.eventView {
+    margin: 0 auto;
+    width: 160px;
+}
+
 @media (max-width: 1245px) {
     .btn-group{
         display: none

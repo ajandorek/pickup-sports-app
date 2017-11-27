@@ -4,6 +4,7 @@ import NewGame from '../components/new_game_form';
 import GMap from '../components/google_map';
 import AuthService from "./utils/AuthService"
 import EventNav from '../components/event_nav';
+import EventView from '../components/event_view';
 
 class Main extends Component {
     static propTypes = {
@@ -23,12 +24,13 @@ class Main extends Component {
                         <button className="btn btn-info pull-right" onClick={auth.login.bind(this)}>Log In</button>
                     </div>
                 </nav>
+                <EventView />
                 <div className='parent'>
                     <Weather className="content" />
                     <GMap className="content" />
                     <NewGame className="content" />
-                    </div>
-                    <EventNav />
+                </div>
+                <EventNav />
             </div>
         );
     }
