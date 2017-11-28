@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 
-class EventView extends Component {
-  render() {
-    return (
-      <div className="eventView">
-        <button
-          className="btn btn-primary"
-        >
-          Map View
+let EventView = () => {
+  return (
+    <div className="eventView">
+      <button
+        className="btn btn-primary"
+      >
+        Map View
         </button>
-        <button
-          className="btn btn-primary"
-        >
-          List View
+      <button
+        className="btn btn-primary"
+      >
+        List View
         </button>
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default EventView;

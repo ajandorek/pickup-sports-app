@@ -5,6 +5,7 @@ import GMap from '../components/google_map';
 import AuthService from "./utils/AuthService"
 import EventNav from '../components/event_nav';
 import EventView from '../components/event_view';
+import EventList from '../components/event_list';
 
 class Main extends Component {
     static propTypes = {
@@ -30,6 +31,7 @@ class Main extends Component {
                     <GMap className="content" />
                     <NewGame className="content" />
                 </div>
+                <EventList />
                 <EventNav />
             </div>
         );

@@ -4,12 +4,6 @@ import { fetchWeather } from '../actions/weatherAction';
 import _ from 'lodash';
 import Halogen from 'halogen';
 
-// @connect((store) => {
-//     return {
-//         weather: store.weather,
-//     }
-// })
-
 class Weather extends Component {
 
     constructor(props) {
