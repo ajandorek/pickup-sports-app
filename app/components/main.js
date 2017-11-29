@@ -1,11 +1,10 @@
 import React, { Component, PropTypes as T } from 'react';
+
 import Weather from '../components/weather';
 import NewGame from '../components/new_game_form';
-import GMap from '../components/google_map';
 import AuthService from "./utils/AuthService"
 import EventNav from '../components/event_nav';
 import EventView from '../components/event_view';
-import EventList from '../components/event_list';
 
 class Main extends Component {
     static propTypes = {
@@ -28,10 +27,9 @@ class Main extends Component {
                 <EventView />
                 <div className='parent'>
                     <Weather className="content" />
-                    <GMap className="content" />
+                    {this.props.children}
                     <NewGame className="content" />
                 </div>
-                <EventList />
                 <EventNav />
             </div>
         );

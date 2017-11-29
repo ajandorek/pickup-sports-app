@@ -15,7 +15,9 @@ export default class Container extends Component {
 
     return (
         <div className='container-fluid'>
-        <Main auth={auth}/>
+        <Main auth={auth}>
+          {this.props.children}
+        </Main>
         </div>
     )
   }

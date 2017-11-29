@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
+import { Link, IndexLink } from 'react-router';
 
 let EventView = () => {
   return (
     <div className="eventView">
-      <button
+      <IndexLink
+        to='/'
         className="btn btn-primary"
       >
         Map View
-        </button>
-      <button
+        </IndexLink>
+      <Link
+        to='/list_view'
         className="btn btn-primary"
       >
         List View
-        </button>
+        </Link>
     </div>
   )
 }

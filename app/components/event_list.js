@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchEvents } from '../actions/eventAction';
+import moment from 'moment';
 
 class EventList extends Component {
   constructor(props) {
@@ -13,20 +13,22 @@ class EventList extends Component {
     const sport = events.sport;
     const location = events.location;
     return (
-      <div key={title}>
-        <ul>
-          <li>{title}</li>
-          <li>{time}</li>
-          <li>{sport}</li>
-          <li>{location}</li>
-        </ul>
+      <div className='panel panel-primary' key={title}>
+        <div className='panel-heading'>
+          <h3 className='panel-title'>{title}</h3>
+        </div>
+        <div className='panel-body'>
+            <p>Time: {moment(time).format("MM/DD/YYYY h:mm A")}</p>
+            <p>Sport: {sport}</p>
+            <p>Location: {location}</p>
+        </div>
       </div>
     )
   }
 
   render() {
     return (
-      <div>
+      <div className='list-view'>
         {this.props.events && this.props.events.data && this.props.events.data.data.map(this.renderEvents)}
       </div>
     )

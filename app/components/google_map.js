@@ -12,7 +12,7 @@ const RenderMap = withGoogleMap(props => (
         defaultZoom={13}
         defaultCenter={{ lat: 30.2672, lng: -97.7431 }}
     >
-        {props.events && props.events.data && props.events.data.data.map((marker,i) => (
+        {props.events && props.events.data && props.events.data.data.map((marker, i) => (
             <Marker
                 key={i}
                 {...{ position: { lat: marker.lat, lng: marker.lng } }}
@@ -20,8 +20,8 @@ const RenderMap = withGoogleMap(props => (
             >
                 {marker.showInfo && <InfoWindow onCloseClick={() => props.onMarkerClose(marker)}>
                     <div>
-                        <div><strong style={{ color:'dodgerblue' }}>Event: </strong><span className='eventInfo'>{marker.title}</span></div>
-                        <div><strong style={{ color: 'dodgerblue' }}>Date/Time: </strong><span className='eventInfo'>{moment(marker.time).format("MM/DD/YYYY hh:mm A") }</span></div>
+                        <div><strong style={{ color: 'dodgerblue' }}>Event: </strong><span className='eventInfo'>{marker.title}</span></div>
+                        <div><strong style={{ color: 'dodgerblue' }}>Date/Time: </strong><span className='eventInfo'>{moment(marker.time).format("MM/DD/YYYY h:mm A")}</span></div>
                         <div><strong style={{ color: 'dodgerblue' }}>Sport: </strong><span className='eventInfo'>{marker.sport}</span></div>
                         <div><strong style={{ color: 'dodgerblue' }}>Location: </strong><span className='eventInfo'>{marker.location}</span></div>
                     </div>
@@ -31,29 +31,19 @@ const RenderMap = withGoogleMap(props => (
     </GoogleMap>
 ));
 
-@connect((store) => {
-    return {
-        events: store.events,
-    }
-})
-
-export default class GMap extends Component {
+class GMap extends Component {
 
     constructor(props) {
         super(props);
         this.props.dispatch(fetchEvents('#'));
     }
-    
+
 
     componentWillReceiveProps(nextProps) {
         this.setState({ events: nextProps.events });
     }
 
     handleMarkerClick(targetMarker) {
-
-        console.log(targetMarker);
-
-
         this.setState({
             events: {
                 data: {
@@ -94,15 +84,26 @@ export default class GMap extends Component {
 
 
     render() {
-        if (!this.props.events || !this.props.events.data) return <div><Halogen.RingLoader color='#4DAF7C'/></div>
+        if (this.state === null) return (
+            <RenderMap
+                containerElement={<div className="map" style={{ height: 500, width: 554 }} />}
+                mapElement={<div style={{ height: 500, width: 554 }} />}
+            />
+        )
         return (
-                <RenderMap
-                    containerElement={<div className="map" style={{ height: 500, width: 554 }} />}
-                    mapElement={<div style={{ height: 500, width: 554 }} />}
-                    events={this.state.events}
-                    onMarkerClick={this.handleMarkerClick}
-                    onMarkerClose={this.handleMarkerClose}
-                />
+            <RenderMap
+                containerElement={<div className="map" style={{ height: 500, width: 554 }} />}
+                mapElement={<div style={{ height: 500, width: 554 }} />}
+                events={this.state.events}
+                onMarkerClick={this.handleMarkerClick}
+                onMarkerClose={this.handleMarkerClose}
+            />
         );
     }
 }
+
+function mapStateToProps({ events }) {
+    return { events }
+};
+
+export default connect(mapStateToProps)(GMap);
