@@ -17,7 +17,15 @@ module.exports = {
         test: /\.scss$/,
         loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
-      { test: /\.css$/, loader: 'style-loader!css-loader' }
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      {
+        test: /\.(?:png|jpg|svg)$/,
+        loader: 'url-loader',
+        query: {
+            // Inline images smaller than 10kb as data URIs
+            limit: 400000
+        }
+    }
     ]
   },
   devtool: "eval-source-map"

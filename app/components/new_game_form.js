@@ -37,8 +37,8 @@ class NewGame extends Component {
                     use12Hours
                     {...field.input}
                 /> */}
-                <Datetime 
-                {...field.input}
+                <Datetime
+                    {...field.input}
                 />
                 <div className="text-help">
                     {touched ? error : ''}
@@ -94,52 +94,54 @@ class NewGame extends Component {
     render() {
         const { fields: { title, location, sport, time }, handleSubmit, resetForm, submitting } = this.props;
         return (
-            <form onSubmit={handleSubmit(this.submitMyForm.bind(this))}>
-                <h3>Add a New Pickup Game!</h3>
-                <div>
-                    <label>Event Name</label>
-                    <Field
-                        placeholder="Event Title"
-                        type="text"
-                        component={this.renderField}
-                        name='title'
-                        className="form-control"
-                    />
-                </div>
-                <div>
-                    <label>Date/Time</label>
-                    <Field
-                        name='time'
-                        component={this.renderTime}
-                        type="text"
-                        className="form-control"
-                    />
+            <div className='well'>
+                <form onSubmit={handleSubmit(this.submitMyForm.bind(this))}>
+                    <h3>Add a New Pickup Game!</h3>
+                    <div>
+                        <label>Event Name</label>
+                        <Field
+                            placeholder="Event Title"
+                            type="text"
+                            component={this.renderField}
+                            name='title'
+                            className="form-control"
+                        />
+                    </div>
+                    <div>
+                        <label>Date/Time</label>
+                        <Field
+                            name='time'
+                            component={this.renderTime}
+                            type="text"
+                            className="form-control"
+                        />
+                        <div className="text-help">
+                        </div>
+                    </div>
+                    <div>
+                        <label>Sport</label>
+                        <Field
+                            name="sport"
+                            component={this.renderSelector}
+                            className="form-control" />
+                    </div>
                     <div className="text-help">
                     </div>
-                </div>
-                <div>
-                    <label>Sport</label>
-                    <Field
-                        name="sport"
-                        component={this.renderSelector}
-                        className="form-control" />
-                </div>
-                <div className="text-help">
-                </div>
-                <div>
-                    <label>Location</label>
-                    <Field
-                        placeholder="Event Location"
-                        component={this.renderField}
-                        name='location'
-                        type="text"
-                        className="form-control"
-                    />
-                    <div className="text-help">
+                    <div>
+                        <label>Location</label>
+                        <Field
+                            placeholder="Event Location"
+                            component={this.renderField}
+                            name='location'
+                            type="text"
+                            className="form-control"
+                        />
+                        <div className="text-help">
+                        </div>
                     </div>
-                </div>
-                <button className='btn btn-primary submit'>Submit</button>
-            </form>
+                    <button className='btn btn-primary submit'>Submit</button>
+                </form>
+            </div>
         )
     }
 }

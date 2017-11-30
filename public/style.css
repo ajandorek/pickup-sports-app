@@ -2,6 +2,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    background-color: #011627;
+}
+
 .map {
     margin: 0 auto;
     display: inline-block;
@@ -12,41 +16,44 @@
     width: 300px;
     display: inline-block;
     vertical-align:top;
+    background: #2EC4B6;
+    color: #FDFFFC;
 }
 
 nav { 
     border-radius: 0 0 10px 10px;
 }
 
-div, form {
-    border-radius: 10px !important;
+.navbar {
+    margin-bottom: 5px;
+    background: #2EC4B6;
 }
 
-.btn {
-    border-radius: 10px;   
+.navbar-default .navbar-text {
+    color: #FDFFFC;
 }
 
 form {
-    width: 300px;
-    background-color: #4e5d6c;
-    padding: 20px;
     display: inline-block;
     vertical-align:top;
 }
 
 .btn-info {
     margin-top: 10px;
+    background: #FF9F1C;
 }
 
 .btn-group {
     margin: 0 auto;
     display: block;
     width: 554px;
+    margin-top: 5px;
 }
 
 .btn-primary {
     width: 80px;
     font-size: 12px;
+    background: #E71D36;
 }
 
 .submit{
@@ -101,6 +108,7 @@ h3 {
 .eventView {
     margin: 0 auto;
     width: 160px;
+    margin-bottom: 5px;
 }
 
 .list-view {
