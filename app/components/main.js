@@ -1,4 +1,5 @@
-import React, { Component, PropTypes as T } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Weather from '../components/weather';
 import NewGame from '../components/new_game_form';
@@ -8,8 +9,8 @@ import EventView from '../components/event_view';
 
 class Main extends Component {
     static propTypes = {
-        location: T.object,
-        auth: T.instanceOf(AuthService),
+        location: PropTypes.object,
+        auth: PropTypes.instanceOf(AuthService),
     }
 
     render() {

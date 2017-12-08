@@ -4,7 +4,6 @@ import { fetchEvents } from '../actions/eventAction';
 import Helpers from './utils/helpers';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import _ from "lodash";
-import Halogen from 'halogen';
 import moment from 'moment';
 
 const RenderMap = withGoogleMap(props => (

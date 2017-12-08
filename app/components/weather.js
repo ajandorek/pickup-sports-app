@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchWeather } from '../actions/weatherAction';
 import _ from 'lodash';
-import Halogen from 'halogen';
 
 class Weather extends Component {
 
@@ -13,10 +12,10 @@ class Weather extends Component {
 
     render() {
         if (this.props.weather.isFetching) {
-            return (<div><Halogen.RingLoader color='#4DAF7C'/></div>)
+            return (<div>Loading</div>);
         }
         if (!this.props.weather.data) {
-            return (<div><Halogen.RingLoader color='#4DAF7C'/></div>)
+            return (<div>Loading</div>);
         }
         return (
             <div className="well">

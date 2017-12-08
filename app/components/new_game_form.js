@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { newEvent } from '../actions/formAction';
 import 'rc-time-picker/assets/index.css';
@@ -28,15 +28,6 @@ class NewGame extends Component {
         const className = `form-group ${touched && error ? 'has-danger' : ''}`
         return (
             <div className={className}>
-                {/* <TimePicker
-                    showSecond={false}
-                    defaultValue={now}
-                    className="xxx"
-                    onChange={onChange}
-                    format={format}
-                    use12Hours
-                    {...field.input}
-                /> */}
                 <Datetime
                     {...field.input}
                 />

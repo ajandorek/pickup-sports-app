@@ -24,6 +24,7 @@
     "moment": "^2.18.1",
     "mongoose": "^4.9.2",
     "morgan": "^1.8.1",
+    "prop-types": "^15.6.0",
     "rc-time-picker": "^2.3.5",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.10",
