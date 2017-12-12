@@ -10,12 +10,6 @@ import store from './store';
 
 ReactDOM.render(
     <Provider store={store}>
-        {/* <Router history={hashHistory}>
-            <Route path='/' component={App}>
-                <Route path='list_view' component={EventList} />
-                <IndexRoute component={GMap} />
-            </Route>
-        </Router> */}
         <App />
     </Provider>,
     document.getElementById("app")); 
