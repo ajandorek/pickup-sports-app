@@ -6,6 +6,9 @@ import NewGame from '../components/new_game_form';
 import AuthService from "./utils/AuthService"
 import EventNav from '../components/event_nav';
 import EventView from '../components/event_view';
+import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
+import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Main extends Component {
     static propTypes = {
@@ -17,14 +20,15 @@ class Main extends Component {
         const { auth } = this.props;
         return (
             <div className='container-fluid'>
-                <nav className="navbar navbar-default">
-                    <div className="container-fluid">
-                        <div className="navbar-header">
-                            <h2 className="navbar-text">PickUp!</h2>
-                        </div>
-                        <button className="btn btn-info pull-right" onClick={auth.login.bind(this)}>Log In</button>
-                    </div>
-                </nav>
+                <Toolbar>
+                    <ToolbarGroup>
+                        <ToolbarTitle text="PickUp!" />
+                    </ToolbarGroup>
+                    <ToolbarSeparator />
+                    <ToolbarGroup>
+                        <RaisedButton label="Login" primary={true} onClick={auth.login.bind(this)} />
+                    </ToolbarGroup>
+                </Toolbar>
                 <EventView />
                 <div className='parent'>
                     <Weather className="content" />

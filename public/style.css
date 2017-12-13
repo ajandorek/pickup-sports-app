@@ -1,10 +1,10 @@
 *{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;    
 }
 
-body {
+/* body {
     background-color: #011627;
-}
+} */
 
 .map {
     margin: 0 auto;
@@ -16,8 +16,8 @@ body {
     width: 300px;
     display: inline-block;
     vertical-align:top;
-    background: #2EC4B6;
-    color: #FDFFFC;
+    /* background: #2EC4B6;
+    color: #FDFFFC; */
 }
 
 nav { 
@@ -26,12 +26,12 @@ nav {
 
 .navbar {
     margin-bottom: 5px;
-    background: #2EC4B6;
+    /* background: #2EC4B6; */
 }
 
-.navbar-default .navbar-text {
+/* .navbar-default .navbar-text {
     color: #FDFFFC;
-}
+} */
 
 form {
     display: inline-block;
@@ -40,7 +40,7 @@ form {
 
 .btn-info {
     margin-top: 10px;
-    background: #FF9F1C;
+    /* background: #FF9F1C; */
 }
 
 .btn-group {
@@ -53,7 +53,7 @@ form {
 .btn-primary {
     width: 80px;
     font-size: 12px;
-    background: #E71D36;
+    /* background: #E71D36; */
 }
 
 .submit{
@@ -80,9 +80,9 @@ h3 {
     white-space:nowrap;
 }
 
-.eventInfo{
+/* .eventInfo{
     color: darkslategrey;
-}
+} */
 
 .form-control {
      border-radius: 4px;
