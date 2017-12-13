@@ -4,13 +4,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 let EventView = () => {
   return (
-    <div className="eventView">
-      <IndexLink to='/' >
-        <RaisedButton primary={true} label='Map View' />
-      </IndexLink>
-      <Link to='/list_view'>
-        <RaisedButton primary={true} label='List View' />
-      </Link>
+    <div className='eventView'>
+      <div className='event-btn-view'>
+        <IndexLink to='/' className='event-btn'>
+          <RaisedButton primary={true} label='Map View' />
+        </IndexLink>
+        <Link to='/list_view' className='event-btn'>
+          <RaisedButton primary={true} label='List View' />
+        </Link>
+      </div>
     </div>
   )
 }

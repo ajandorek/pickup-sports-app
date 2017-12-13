@@ -106,10 +106,20 @@ h3 {
 }
 
 .eventView {
+    padding: 5px 0 5px 0;
     margin: 0 auto;
-    width: 200px;
+    width: 250px;
     display: flex;
-    margin-bottom: 5px;
+    /* margin: 5px; */
+}
+
+.event-btn {
+    margin: 5px;
+}
+
+.event-btn-view {
+    width: 225px;
+    margin: 0 auto;
 }
 
 .list-view {
