@@ -107,7 +107,8 @@ h3 {
 
 .eventView {
     margin: 0 auto;
-    width: 160px;
+    width: 200px;
+    display: flex;
     margin-bottom: 5px;
 }
 
