@@ -17,14 +17,11 @@ class NewGame extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 'Soccer'
+            value: ''
         };
     }
 
-    handleChange(value){
-        console.log('here', value)
-        this.setState({ value });
-    }
+    handleChange = (event, index, value) => this.setState({value});
 
     submitMyForm(event) {
         const { reset } = this.props
@@ -50,24 +47,23 @@ class NewGame extends Component {
     }
 
     renderSelector(field) {
-        const { value } = this.state;
         const { meta: { touched, error } } = field;
+        console.log(this.state.value);
         return (
             <div>
                 <SelectField
                     floatingLabelText="Please Select a Sport"
-                    value='Soccer'
-                    onChange={(value) => this.handleChange(value)}
+                    value={this.state.value}
+                    onChange={(event, index, value) => this.setState({value})}
                     type="select"
-                    {...field.input}
                 >
-                    <MenuItem value={1} primaryText='' />
-                    <MenuItem value={2} primaryText='Baseball' />
-                    <MenuItem value={3} primaryText='Basketball' />
-                    <MenuItem value={4} primaryText='Football' />
-                    <MenuItem value={5} primaryText='Soccer' />
-                    <MenuItem value={6} primaryText='Volleyball' />
-                    <MenuItem value={7} primaryText='Other' />
+                    <MenuItem value='' primaryText='' />
+                    <MenuItem value='Baseball' primaryText='Baseball' />
+                    <MenuItem value='Basketball' primaryText='Basketball' />
+                    <MenuItem value='Football' primaryText='Football' />
+                    <MenuItem value='Soccer' primaryText='Soccer' />
+                    <MenuItem value='Volleyball' primaryText='Volleyball' />
+                    <MenuItem value='Other' primaryText='Other' />
                 </SelectField>
             </div>
         )
@@ -75,7 +71,6 @@ class NewGame extends Component {
 
     renderField(field) {
         const { meta: { touched, error } } = field;
-
         return (
             <div>
                 <TextField
@@ -89,6 +84,7 @@ class NewGame extends Component {
     }
 
     render() {
+        
         const { fields: { title, location, sport, time }, handleSubmit, resetForm, submitting } = this.props;
         return (
             <div className='well'>
