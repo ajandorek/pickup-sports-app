@@ -19,32 +19,32 @@ class EventNav extends Component {
                 <RaisedButton
                     label="Baseball"
                     primary={true}
-                    onClick={() => { this.props.fetchEvents('baseball') }}
+                    onClick={() => { this.props.fetchEvents('Baseball') }}
                 />
                 <RaisedButton
                     label="Basketball"
                     primary={true}
-                    onClick={() => { this.props.fetchEvents('basketball') }}
+                    onClick={() => { this.props.fetchEvents('Basketball') }}
                 />
                 <RaisedButton
                     label="Football"
                     primary={true}
-                    onClick={() => { this.props.fetchEvents('football') }}
+                    onClick={() => { this.props.fetchEvents('Football') }}
                 />
                 <RaisedButton
                     label="Soccer"
                     primary={true}
-                    onClick={() => { this.props.fetchEvents('soccer') }}
+                    onClick={() => { this.props.fetchEvents('Soccer') }}
                 />
                 <RaisedButton
                     label="Volleyball"
                     primary={true}
-                    onClick={() => { this.props.fetchEvents('volleyball') }}
+                    onClick={() => { this.props.fetchEvents('Volleyball') }}
                 />
                 <RaisedButton
                     label="Other"
                     primary={true}
-                    onClick={() => { this.props.fetchEvents('other') }}
+                    onClick={() => { this.props.fetchEvents('Other') }}
                 />
             </div>
         )
