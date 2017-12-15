@@ -71,8 +71,7 @@ app.post("/api/events", function (req, res) {
         location: req.body.location,
         time: req.body.time,
         lat: results.lat,
-        lng: results.lng,
-        expireAt: req.body.time
+        lng: results.lng
       }).then(obj=>res.json(obj));
     });
 });

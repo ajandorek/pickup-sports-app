@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../actions/eventAction';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class EventNav extends Component {
     constructor(props) {
@@ -10,40 +11,41 @@ class EventNav extends Component {
     render() {
         return (
             <div className="btn-group">
-                <button 
-                    className="btn btn-primary" 
-                    onClick={() => {this.props.fetchEvents('#')}}>
-                    View All
-                </button>
-                <button 
-                    className="btn btn-primary" 
-                    onClick={() => {this.props.fetchEvents('Baseball')}}>
-                    Baseball
-                </button>
-                <button 
-                    className="btn btn-primary"
-                    onClick={() => {this.props.fetchEvents('Basketball')}}>
-                    Basketball
-                </button>
-                <button 
-                    className="btn btn-primary"
-                    onClick={() => {this.props.fetchEvents('Football')}}>
-                    Football
-                </button>
-                <button 
-                    className="btn btn-primary"
-                    onClick={() => {this.props.fetchEvents('Soccer')}}>
-                    Soccer
-                </button>
-                <button 
-                    className="btn btn-primary"
-                    onClick={() => {this.props.fetchEvents('Volleyball')}}>
-                    Volleyball</button>
-                <button 
-                    className="btn btn-primary"
-                    onClick={() => {this.props.fetchEvents('Other')}}>
-                    Other
-                </button>
+                <RaisedButton
+                    label="View All"
+                    primary={true}
+                    onClick={() => { this.props.fetchEvents('#') }}
+                />
+                <RaisedButton
+                    label="Baseball"
+                    primary={true}
+                    onClick={() => { this.props.fetchEvents('baseball') }}
+                />
+                <RaisedButton
+                    label="Basketball"
+                    primary={true}
+                    onClick={() => { this.props.fetchEvents('basketball') }}
+                />
+                <RaisedButton
+                    label="Football"
+                    primary={true}
+                    onClick={() => { this.props.fetchEvents('football') }}
+                />
+                <RaisedButton
+                    label="Soccer"
+                    primary={true}
+                    onClick={() => { this.props.fetchEvents('soccer') }}
+                />
+                <RaisedButton
+                    label="Volleyball"
+                    primary={true}
+                    onClick={() => { this.props.fetchEvents('volleyball') }}
+                />
+                <RaisedButton
+                    label="Other"
+                    primary={true}
+                    onClick={() => { this.props.fetchEvents('other') }}
+                />
             </div>
         )
     }

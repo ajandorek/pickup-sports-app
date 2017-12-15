@@ -19,9 +19,6 @@ var SportSchema = new Schema({
     },
     lng: {
         type: Number
-    },
-    expireAt: {
-        type: Date
     }
 });
 

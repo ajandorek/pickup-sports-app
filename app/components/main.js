@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Weather from '../components/weather';
-import NewGame from '../components/new_game_form';
+// import NewGame from '../components/new_game_form';
+import NewEvent from '../components/event_form';
 import AuthService from "./utils/AuthService"
 import EventNav from '../components/event_nav';
 import EventView from '../components/event_view';
@@ -31,9 +32,10 @@ class Main extends Component {
                 </Toolbar>
                 <EventView />
                 <div className='parent'>
-                    <Weather className="content" />
+                    <Weather className='content' />
                     {this.props.children}
-                    <NewGame className="content" />
+                    {/* <NewGame className="content" /> */}
+                    <NewEvent className='content' />
                 </div>
                 <EventNav />
             </div>
