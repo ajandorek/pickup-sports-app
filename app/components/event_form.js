@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText } from 'material-ui/Card';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import axios from 'axios';
+import { fetchEvents } from '../actions/eventAction';
+
+//Material Components
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 import RaisedButton from 'material-ui/RaisedButton';
-import moment from 'moment';
-import axios from 'axios';
+import { Card, CardTitle, CardText } from 'material-ui/Card';
 
-export default class EventForm extends Component {
+
+class EventForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      event: '',
+      title: '',
       time: '',
       date: '',
       sport: '',
@@ -34,6 +39,21 @@ export default class EventForm extends Component {
     console.log(moment(appointmentMoment._d).format('MM/DD/YYYY hh:mm A'));
     e.preventDefault();
     
+    axios.post('api/events', {
+      title: this.state.title,
+      sport: this.state.sport,
+      location: this.state.location,
+      time: appointmentMoment,
+    }).then(() => {
+      this.props.fetchEvents('#');
+      this.setState({
+        title: '',
+        time: '',
+        date: '',
+        sport: '',
+        location: ''
+      });
+    });
   }
 
   render() {
@@ -43,11 +63,12 @@ export default class EventForm extends Component {
         <Card>
           <CardTitle title="Add a New Pickup Game" />
           <CardText>
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <form>
               <TextField
                 type="text"
                 floatingLabelText='Event Title'
-                onChange={(e) => this.setState({ event: e.target.value })}
+                value={this.state.title}
+                onChange={(e, value) => this.setState({ title: value })}
               />
               <SelectField
                     floatingLabelText="Please Select a Sport"
@@ -62,14 +83,15 @@ export default class EventForm extends Component {
                     <MenuItem value='Volleyball' primaryText='Volleyball' />
                     <MenuItem value='Other' primaryText='Other' />
                 </SelectField>
-                <DatePicker hintText="Select Date" onChange={(event, value) => this.setState({ date: value})} />
-                <TimePicker hintText="Select Time" onChange={(event, value) => this.setState({ time: value})} />
+                <DatePicker hintText="Select Date" value={this.state.date} onChange={(event, value) => this.setState({ date: value})} />
+                <TimePicker hintText="Select Time" value={this.state.time} onChange={(event, value) => this.setState({ time: value})} />
               <TextField
                 type="text"
                 floatingLabelText='Location'
+                value={this.state.location}
                 onChange={(e) => this.setState({ location: e.target.value })}
               />
-               <RaisedButton label="Submit" primary={true} fullWidth={true} />
+               <RaisedButton label="Submit" primary={true} fullWidth={true} onClick={this.handleSubmit.bind(this)} />
             </form>
           </CardText>
         </Card>
@@ -78,3 +100,5 @@ export default class EventForm extends Component {
     )
   }
 }
+
+export default connect(null, { fetchEvents })(EventForm);

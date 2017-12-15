@@ -23,7 +23,7 @@ class Main extends Component {
             <div className='container-fluid'>
                 <Toolbar>
                     <ToolbarGroup>
-                        <ToolbarTitle text="PickUp!" />
+                        <h2>PickUp!</h2>
                     </ToolbarGroup>
                     <ToolbarSeparator />
                     <ToolbarGroup>
