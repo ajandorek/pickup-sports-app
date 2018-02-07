@@ -46,8 +46,8 @@ form {
 
 .btn-group {
     margin: 0 auto;
-    display: block;
-    width: 554px;
+    display: flex;
+    width: 702px;
     margin-top: 5px;
 }
 
@@ -72,8 +72,9 @@ h3 {
 }
 
 .parent {
-    width: 100%;
-    display:flex;
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
     justify-content:space-between;
   }
 

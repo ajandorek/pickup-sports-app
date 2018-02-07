@@ -91,8 +91,8 @@ class GMap extends Component {
         )
         return (
             <RenderMap
-                containerElement={<div className="map" style={{ height: 500, width: 554 }} />}
-                mapElement={<div style={{ height: 500, width: 554 }} />}
+                containerElement={<div className="map" style={{ height: 600, width: 664 }} />}
+                mapElement={<div style={{ height: 600, width: 664 }} />}
                 events={this.state.events}
                 onMarkerClick={this.handleMarkerClick}
                 onMarkerClose={this.handleMarkerClose}
